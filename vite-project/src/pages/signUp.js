@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
-import './SignUp.css';
+import '../SignUp.css';
 
 function SignUp() {
   return (
