@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { Navbar, Nav, Container, Row, Col } from 'react-bootstrap';
-import Home from './pages/home.js';
-import Listings from './pages/listings.js';
-import About from './pages/about.js';
-import ContactUs from './pages/contactUs.js';
-import Login from './pages/login.js';
-import SignUp from './pages/signUp.js';
+import Home from './pages/home.jsx';
+import Listings from './pages/listings.jsx';
+import About from './pages/about.jsx';
+import ContactUs from './pages/contactUs.jsx';
+import Login from './pages/login.jsx';
+import SignUp from './pages/signUp.jsx';
 
 function App() {
   return (
@@ -43,9 +43,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/listings" element={<Listings />} />
           <Route path="/about" element={<About />} />
-          <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/contactUs" element={<ContactUs />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
+          <Route path="/signUp" element={<SignUp />} />
         </Routes>
       </div>
     </Router>

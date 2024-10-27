@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Listings.css';
+import './Listings.css';
 
 function Listings() {
   return (

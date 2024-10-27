@@ -1,0 +1,17 @@
+.footer {
+  background-color: #1b1b1b; /* Matches the dark background from the navbar */
+  color: #ddd; /* Light gray text */
+  padding: 15px 0; /* Padding to give some space around the text */
+  width: 100%; /* Ensures it spans the entire width */
+  position: fixed; /* Keeps the footer at the bottom */
+  bottom: 0;
+  left: 0; /* Aligns it to the left edge */
+  z-index: 1000; /* Ensure it stays above other elements */
+  text-align: center; /* Center align the text */
+}
+
+.footer p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 400;
+}

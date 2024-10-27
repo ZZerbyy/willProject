@@ -1,11 +1,11 @@
 import React from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
-import '../SignUp.css';
+import './Login.css';
 
-function SignUp() {
+function Login() {
   return (
-    <Container className="signup-container">
-      <h1>Sign Up</h1>
+    <Container className="login-container">
+      <h1>Login</h1>
       <Form>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
@@ -16,11 +16,11 @@ function SignUp() {
           <Form.Control type="password" placeholder="Password" />
         </Form.Group>
         <Button variant="primary" type="submit">
-          Sign Up
+          Login
         </Button>
       </Form>
     </Container>
   );
 }
 
-export default SignUp;
+export default Login;
