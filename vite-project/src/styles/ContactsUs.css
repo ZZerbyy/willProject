@@ -1,0 +1,16 @@
+.container {
+    margin-top: 40px;
+  }
+  
+  h1 {
+    color: #3AAFA9;
+  }
+  
+  .form-group {
+    margin-top: 20px;
+  }
+  
+  button {
+    background-color: #2B7A78;
+    color: white;
+  }

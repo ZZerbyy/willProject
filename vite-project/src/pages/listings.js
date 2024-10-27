@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
+import '../styles/Listings.css';
 
 function Listings() {
   return (
