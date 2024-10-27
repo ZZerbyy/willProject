@@ -1,13 +1,17 @@
 import React from 'react';
-import './About.css';
+import { Container, Row, Col, Image, Button } from 'react-bootstrap';
+import Navigation from '../components/Navbar';  // Import the Navbar component
+import Footer from '../components/Footer';  // Import the Footer component
+import './About.css';  // Link the custom CSS
 
-function About() {
+const About = () => {
   return (
-    <div className="about-container">
-      <h1>About Us</h1>
-      <p>Learn more about our company and team.</p>
+    <div>
+      <Navigation />  {/* Include the Navbar component */}
+      
+      <Footer />  {/* Include the Footer */}
     </div>
   );
-}
+};
 
 export default About;

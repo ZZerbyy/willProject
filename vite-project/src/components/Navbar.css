@@ -19,13 +19,18 @@
 .navbar-nav .nav-link {
     color: #ffffff !important; /* Light gray for navbar links */
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: bold;
     margin-right: 20px;
+    transition: font-size 0.5s ease;
+    line-height: 2rem;
 }
 
 .navbar-nav .nav-link:hover {
     color: #a4a4a4 !important; /* Hover effect in the same CTU Buddy color */
-    text-decoration: underline;
+    font-size: 1.2rem; /* Increase font size on hover */
+    text-decoration: none; /* Remove underline on hover */
+    line-height: 2rem;
+    font-weight: bold;
 }
 
 /* Ensure the content below the navbar has enough space */
@@ -33,25 +38,6 @@
     margin-top: 80px; /* Give enough margin to push content below the navbar */
 }
 
-/* Footer Styles */
-.footer {
-  background-color: #093a00;
-  color: #ffffff;
-  padding: 15px 0;
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 1000;
-  text-align: center;
-}
-
-.footer p {
-  color: white;
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 400;
-}
 
 /* Media Queries for responsiveness */
 @media (max-width: 768px) {

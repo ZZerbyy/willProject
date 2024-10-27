@@ -12,7 +12,7 @@ function App() {
   return (
     <Router>
       <div>
-        {/* Header Section with Title and Slogan /}
+        {/* Header Section with Title and Slogan }
         <header>
           <Container className="text-center py-3">
             <h1>Rent-a-Buy Real Estate</h1>
@@ -20,25 +20,19 @@ function App() {
           </Container>
         </header>
 
-        {/ Navbar /}
+        { Navbar }
         <Navbar bg="dark" variant="dark" expand="lg">
           <Container>
             <Navbar.Brand as={Link} to="/">Home</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
-                <Nav.Link as={Link} to="/">Home</Nav.Link>
-                <Nav.Link as={Link} to="/listings">Listings</Nav.Link>
-                <Nav.Link as={Link} to="/about">About</Nav.Link>
-                <Nav.Link as={Link} to="/contact-us">Contact Us</Nav.Link>
-                <Nav.Link as={Link} to="/login">Login</Nav.Link>
-                <Nav.Link as={Link} to="/signup">Sign Up</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Container>
         </Navbar>
 
-        {/ Main content routes */}
+        { Main content routes */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/listings" element={<Listings />} />
@@ -48,8 +42,8 @@ function App() {
           <Route path="/signUp" element={<SignUp />} />
         </Routes>
       </div>
-    </Router>
+    </Router> 
   );
-}
+};
 
 export default App;

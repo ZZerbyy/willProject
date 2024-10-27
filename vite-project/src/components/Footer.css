@@ -1,6 +1,6 @@
 .footer {
-  background-color: #1b1b1b; /* Matches the dark background from the navbar */
-  color: #ddd; /* Light gray text */
+  background-color: #1e5703; /* Matches the dark background from the navbar */
+  color: #ffffff !important; /* Ensure the text is white */
   padding: 15px 0; /* Padding to give some space around the text */
   width: 100%; /* Ensures it spans the entire width */
   position: fixed; /* Keeps the footer at the bottom */
@@ -14,4 +14,5 @@
   margin: 0;
   font-size: 1rem;
   font-weight: 400;
+  color: #ffffff !important; /* Ensure the text is white */
 }

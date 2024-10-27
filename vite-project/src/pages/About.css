@@ -1,12 +1,50 @@
-.container {
-    margin-top: 40px;
-  }
-  
-  h1 {
-    color: #8D8741;
-  }
-  
-  p {
-    font-size: 1.1rem;
-    color: #333;
-  }
+/* General Container Styling */
+.about-container {
+  padding: 60px 20px; /* Adds spacing at the top and sides */
+  color: #333; /* Main text color */
+}
+
+/* About Titles */
+.about-container h1 {
+  font-size: 2.5rem; /* Larger heading size */
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #008B8B; /* CTU-Buddy theme color */
+}
+
+.about-container h3 {
+  font-size: 1.75rem;
+  margin-top: 30px;
+  color: #00BFFF; /* Programmer section title color */
+}
+
+.about-container p {
+  font-size: 1.1rem; /* Readable paragraph size */
+  line-height: 1.6;
+  margin-bottom: 30px;
+  color: #555; /* Slightly muted text for readability */
+}
+
+/* Image Styling */
+.about-image {
+  width: 100%; /* Full width responsive image */
+  height: auto;
+  border-radius: 8px; /* Slight rounding for modern look */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+/* Button Styling */
+.resume-button {
+  background-color: #008B8B; /* Matches CTU-Buddy theme */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.resume-button:hover {
+  background-color: #00BFFF; /* Hover color change */
+  transition: background-color 0.3s ease;
+}

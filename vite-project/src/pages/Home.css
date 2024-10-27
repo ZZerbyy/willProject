@@ -1,12 +1,36 @@
-.container {
-    margin-top: 40px;
-  }
-  
-  h1 {
-    color: #4A90E2;
-  }
-  
-  p {
-    font-size: 1.1rem;
-    color: #333;
-  }
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Container that spans the full height of the screen */
+.home-page-container {
+  height: 100vh; /* Takes up full viewport height */
+  display: flex;
+  flex-direction: column;
+  justify-content:  flex-start;
+  align-items: center;
+  font-size: 1vw;
+}
+
+/* Fullscreen background image */
+.indent-wrapper-homepage {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100vw; /* Full width of the viewport */
+  height: 100vh; /* Full height of the viewport */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 40px;
+}
+
+/* Optional: Adjustments to the text content */
+.indent-wrapper-homepage h1, .indent-wrapper-homepage h2 {
+  color: white; /* Ensure text stands out on the background */
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5); /* Add some text shadow for readability */
+}

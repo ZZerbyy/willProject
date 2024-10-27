@@ -8,7 +8,7 @@ const Navigation = () => {
       <Navbar.Brand href="/">Rent-A-Buy</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="ms-auto">
+        <Nav className="ml-auto">
           <Nav.Link href="/" className="me-3">Home</Nav.Link>
           <Nav.Link href="listings" className="me-3">Listings</Nav.Link>
           <Nav.Link href="/about" className="me-3">About</Nav.Link>
