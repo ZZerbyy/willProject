@@ -1,13 +1,12 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
-import '../styles/About.css';
+import './About.css';
 
 function About() {
   return (
-    <Container className="mt-4">
+    <div className="about-container">
       <h1>About Us</h1>
-      <p>Learn more about rent-a-Buy Real Estate and our mission.</p>
-    </Container>
+      <p>Learn more about our company and team.</p>
+    </div>
   );
 }
 
