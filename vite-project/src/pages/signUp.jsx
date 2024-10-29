@@ -1,11 +1,15 @@
 import React from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
+import Navigation from '../components/Navbar';
+import Footer from '../components/Footer';
 import './SignUp.css';
 
 function SignUp() {
   return (
     <Container className="signup-container">
-      <h1>Sign Up</h1>
+      <Navigation />
+      <h1>Sign Up/<Nav.Link href="/login" className="me-3">Login</Nav.Link></h1>
       <Form>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
@@ -19,6 +23,7 @@ function SignUp() {
           Sign Up
         </Button>
       </Form>
+      <Footer />
     </Container>
   );
 }
