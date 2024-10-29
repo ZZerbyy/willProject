@@ -18,7 +18,7 @@ function SignUp() {
       <h1>Sign Up / <Link to="/login">Login</Link></h1>
       <Form onSubmit={handleSignUp}>
         <Form.Group controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
+          <Form.Label></Form.Label>
           <Form.Control
             type="email"
             placeholder="Enter email"
@@ -27,7 +27,7 @@ function SignUp() {
           />
         </Form.Group>
         <Form.Group controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
+          <Form.Label></Form.Label>
           <Form.Control
             type="password"
             placeholder="Password"

@@ -32,7 +32,7 @@ function Login() {
       <h1>Login / <Link to="/signUp">Sign-Up</Link></h1>
       <Form onSubmit={handleLogin}>
         <Form.Group controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
+          <Form.Label></Form.Label>
           <Form.Control
             type="email"
             placeholder="Enter email"
@@ -41,7 +41,7 @@ function Login() {
           />
         </Form.Group>
         <Form.Group controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
+          <Form.Label></Form.Label>
           <Form.Control
             type="password"
             placeholder="Password"
