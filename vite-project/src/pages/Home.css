@@ -53,19 +53,15 @@ body {
   border-radius: 4px;
 }
 
-.navbar {
-  background-color: #343a40;
-}
 
-.navbar .navbar-brand {
-  font-weight: bold;
-  color: #fff;
-}
-
-.navbar .nav-link {
-  color: #ccc;
-}
-
-.navbar .nav-link:hover {
-  color: #fff;
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+  .navbar-nav {
+      text-align: center;
+      margin-top: 10px;
+  }
+  .navbar-nav .nav-link {
+      margin-right: 0;
+      margin-bottom: 10px;
+  }
 }

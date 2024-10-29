@@ -6,32 +6,51 @@ body, html {
 }
 
 .container-fluid {
-  background-color: #f8f9fa; /* Light background color */
+  background-color: #ffffff; /* Light background color */
   color: #333; /* Darker text for better readability */
 }
 
-/* Navbar Styles */
-.navbar {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow under navbar */
+.search-section {
+  padding: 50px 20px;
+  text-align: center;
 }
 
-/* Added padding to prevent title from being hidden behind navbar */
-.timetable-section {
-  padding-top: 100px; /* Adjust the value depending on the navbar height */
+.search-section h1 {
+  margin-bottom: 20px;
 }
 
-.navbar-brand img {
-  max-width: 100px; /* Adjust the logo size */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
-.nav-link {
-  font-weight: 500;
-  color: #ddd !important;
+.search-bar input {
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
 }
 
-.nav-link:hover {
-  color: #00C6FF !important;
-  text-decoration: underline;
+.search-bar button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.filters select, .filters button {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 /* Section Headers */
@@ -50,49 +69,4 @@ h1::after {
   height: 4px;
   background-color: #00C6FF;
   margin: 10px auto;
-}
-
-/* Table Styles */
-.table {
-  background-color: #fff;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Soft shadow for depth */
-  margin-bottom: 40px;
-}
-
-.table thead th {
-  background-color: #008B8B;
-  color: #fff;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  padding: 15px;
-}
-
-.table tbody td {
-  padding: 15px;
-  color: #333;
-}
-
-.table tbody tr:nth-child(even) {
-  background-color: #f0f0f0;
-}
-
-.table tbody tr:hover {
-  background-color: #00BFFF;
-  color: #fff;
-  cursor: pointer;
-}
-
-/* Footer */
-footer {
-  background-color: #1b1b1b;
-  color: #ddd;
-  padding: 20px;
-  margin-top: 40px;
-}
-
-footer p {
-  margin: 0;
-  font-size: 1rem;
 }
