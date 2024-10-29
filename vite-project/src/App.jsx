@@ -1,49 +1,30 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import { Navbar, Nav, Container, Row, Col } from 'react-bootstrap';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Home from './pages/home.jsx';
 import Listings from './pages/listings.jsx';
 import About from './pages/about.jsx';
 import ContactUs from './pages/contactUs.jsx';
 import Login from './pages/login.jsx';
 import SignUp from './pages/signUp.jsx';
+import Search from './pages/Search.jsx';
 
 function App() {
+  const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+
   return (
     <Router>
-      <div>
-        {/* Header Section with Title and Slogan }
-        <header>
-          <Container className="text-center py-3">
-            <h1>Rent-a-Buy Real Estate</h1>
-            <p style={{ fontStyle: 'italic', fontSize: '1.2rem' }}>We make it easy</p>
-          </Container>
-        </header>
-
-        { Navbar }
-        <Navbar bg="dark" variant="dark" expand="lg">
-          <Container>
-            <Navbar.Brand as={Link} to="/">Home</Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="me-auto">
-              </Nav>
-            </Navbar.Collapse>
-          </Container>
-        </Navbar>
-
-        { Main content routes */}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/listings" element={<Listings />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contactUs" element={<ContactUs />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signUp" element={<SignUp />} />
-        </Routes>
-      </div>
-    </Router> 
+      <Routes>
+        {/* Redirect to login if not logged in */}
+        <Route path="/" element={isLoggedIn ? <Home /> : <Navigate to="/login" />} />
+        <Route path="/listings" element={isLoggedIn ? <Listings /> : <Navigate to="/login" />} />
+        <Route path="/about" element={isLoggedIn ? <About /> : <Navigate to="/login" />} />
+        <Route path="/contactUs" element={isLoggedIn ? <ContactUs /> : <Navigate to="/login" />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signUp" element={<SignUp />} />
+        <Route path="/search" element={isLoggedIn ? <Search /> : <Navigate to="/login" />} />
+      </Routes>
+    </Router>
   );
-};
+}
 
 export default App;
