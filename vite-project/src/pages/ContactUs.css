@@ -1,16 +1,126 @@
-.container {
-    margin-top: 40px;
+/* General Container and Body Styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'San Francisco', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* Use San Francisco font */
+  background-color: #ffffff; /* Full white background */
+  color: #333;
+  min-height: 100vh;
+  height: 100%;
+}
+
+/* Main Contact Section Container */
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  min-height: 100vh;
+}
+
+/* Contact Section with Glassmorphism Effect */
+.contact-section {
+  padding: 40px 20px;
+  background: rgba(255, 255, 255, 0.9); /* Slightly opaque for glass effect */
+  backdrop-filter: blur(10px); /* Glass effect */
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  width: 190%;
+  margin-top: 100px;
+  text-align: center;
+  margin-left: 280%
+}
+
+/* Heading Style */
+.contact-section h1 {
+  color: #1b1b1b;
+  font-weight: 600;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.contact-section h1::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #007aff; /* iOS blue */
+  margin: 12px auto;
+  border-radius: 2px;
+}
+
+/* Subheading Style */
+.contact-section p {
+  color: #555;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+/* Form Styles */
+.contact-form {
+  width: 100%;
+  max-width: 500px; /* Limit form width for better readability */
+  margin: 0 auto; /* Center the form */
+}
+
+.contact-form .form-group {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 1rem;
+  background-color: #f2f2f2; /* Light gray background */
+  color: #000; /* Black text */
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.form-control::placeholder {
+  color: #777; /* Placeholder color for better readability */
+}
+
+.form-control:focus {
+  border-color: #007aff;
+  box-shadow: 0 0 8px rgba(0, 122, 255, 0.3); /* Soft glow on focus */
+}
+
+/* Non-Resizable Textarea */
+textarea.form-control {
+  resize: none; /* Prevent resizing */
+  height: 100px; /* Set a fixed height */
+}
+
+/* Button Style */
+.submit-btn {
+  width: 100%;
+  padding: 12px 24px;
+  background-color: #007aff;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #005bb5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contact-section {
+    margin-top: 80px;
+    padding: 30px;
   }
-  
-  h1 {
-    color: #3AAFA9;
+
+  .contact-section h1 {
+    font-size: 2rem;
   }
-  
-  .form-group {
-    margin-top: 20px;
-  }
-  
-  button {
-    background-color: #2B7A78;
-    color: white;
-  }
+}
