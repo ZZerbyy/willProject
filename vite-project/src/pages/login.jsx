@@ -15,6 +15,7 @@ function Login() {
     // Simulate authentication (replace with real logic)
     if (email === 'user@example.com' && password === 'password') {
       // If "Remember Me" is checked, persist login state in localStorage
+      console.log('login successful');
       localStorage.setItem('isLoggedIn', 'true');
       if (rememberMe) {
         localStorage.setItem('rememberMe', 'true');
