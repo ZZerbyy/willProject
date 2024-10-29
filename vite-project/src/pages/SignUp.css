@@ -25,6 +25,9 @@
 .login-container .form-control, .signup-container .form-control {
   background-color: #f2f2f2;
   color: #333;
+  width: 90%;
+  padding: 15px;
+  max-width: 600px;
   border: 1px solid #ccc;
   border-radius: 8px;
   margin-bottom: 20px;
@@ -36,7 +39,7 @@
 
 /* Button Styling */
 .login-container .btn-primary, .signup-container .btn-primary {
-  width: 100%;
+  width: 50%;
   padding: 10px;
   background-color: #007aff;
   border: none;
