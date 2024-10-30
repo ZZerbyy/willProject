@@ -11,7 +11,11 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 // Enable CORS for all routes
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:5173', // Replace with the URL of your frontend app
+  methods: ['GET', 'POST', 'OPTIONS'], // Allowed HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+}));
 
 // Middleware to check for JWT and attach user to request
 app.use((req, res, next) => {
