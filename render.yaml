@@ -1,0 +1,15 @@
+# render.yaml
+services:
+  - type: web
+    name: my-backend
+    env: node
+    plan: free
+    buildCommand: "cd backend && npm install"  # Enter backend folder and install dependencies
+    startCommand: "cd backend && npm start"    # Enter backend folder and run start script
+    envVars:
+      - key: SUPABASE_URL
+        value: "https://your-supabase-url.supabase.co"  # Replace with your actual Supabase URL
+      - key: SUPABASE_KEY
+        value: "your-supabase-secret-key"  # Replace with your actual Supabase API Key
+      - key: JWT_SECRET
+        value: "your-jwt-secret"  # Set your JWT secret
