@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 import { useNavigate, Link } from 'react-router-dom';
+import { LOGIN } from '../graphql/queries'; // Import LOGIN mutation
+import { fetchData } from '../graphql/api'; // Import API helper function
 import './SignUp.css';
 
 function Login() {
@@ -9,22 +11,29 @@ function Login() {
   const [rememberMe, setRememberMe] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    // Simulate authentication (replace with real logic)
-    if (email === 'user@example.com' && password === 'password') {
-      // If "Remember Me" is checked, persist login state in localStorage
-      console.log('login successful');
+    try {
+      // Call the LOGIN mutation with email and password
+      const { login } = await fetchData(LOGIN, { email, password });
+
+      // Save token in localStorage and set isLoggedIn
+      localStorage.setItem('authToken', login.token);
       localStorage.setItem('isLoggedIn', 'true');
+      
+      // Set rememberMe in localStorage based on the checkbox
       if (rememberMe) {
         localStorage.setItem('rememberMe', 'true');
       } else {
         localStorage.removeItem('rememberMe');
       }
+
       navigate('/'); // Redirect to home after successful login
-    } else {
-      alert('Invalid email or password');
+
+    } catch (error) {
+      console.error('Login failed:', error.message);
+      alert('Invalid email or password'); // Show error to user
     }
   };
 
@@ -33,7 +42,7 @@ function Login() {
       <h1>Login / <Link to="/signUp">Sign-Up</Link></h1>
       <Form onSubmit={handleLogin}>
         <Form.Group controlId="formBasicEmail">
-          <Form.Label></Form.Label>
+          <Form.Label>Email</Form.Label>
           <Form.Control
             type="email"
             placeholder="Enter email"
@@ -42,7 +51,7 @@ function Login() {
           />
         </Form.Group>
         <Form.Group controlId="formBasicPassword">
-          <Form.Label></Form.Label>
+          <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"
             placeholder="Password"
