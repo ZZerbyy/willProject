@@ -4,9 +4,12 @@ const schema = buildSchema(`
   type Query {
     users: [User]
     userById(id: ID!): User
-    properties: [Property]
+
+    # Fetch properties with optional filters
+    properties(property_type: String, min_price: Float, max_price: Float): [Property]
     propertiesByUser(user_id: ID!): [Property]
     propertyById(id: ID!): Property
+
     favoritesByUser(user_id: ID!): [Favorite] 
     wishlistByUser(user_id: ID!): [Wishlist]
   }
@@ -17,9 +20,26 @@ const schema = buildSchema(`
     updateUser(id: ID!, username: String, email: String): User
     deleteUser(id: ID!): User
 
-    addProperty(name: String!, location: String!, price: Float!, description: String!, user_id: ID!): Property
-    updateProperty(id: ID!, name: String, location: String, price: Float, description: String): Property
+    addProperty(
+      name: String!,
+      location: String!,
+      price: Float!,
+      description: String!,
+      property_type: String!, # New field added
+      user_id: ID!
+    ): Property
+    
+    updateProperty(
+      id: ID!,
+      name: String,
+      location: String,
+      price: Float,
+      description: String,
+      property_type: String # New field added
+    ): Property
+    
     deleteProperty(id: ID!): Property
+
     addFavorite(user_id: ID!, property_id: ID!): Favorite 
     addWishlist(user_id: ID!, property_id: ID!): Wishlist
   }
@@ -31,28 +51,31 @@ const schema = buildSchema(`
     created_at: String
     properties: [Property]
   }
- type AuthPayload {
+  
+  type AuthPayload {
     token: String
     user: User
   }
+  
   type Property {
     id: ID
     name: String
     location: String
     price: Float
     description: String
+    property_type: String # New field added
     user_id: ID
     created_at: String
   }
   
-    type Favorite { 
+  type Favorite { 
     id: ID 
     user_id: ID 
     property_id: ID 
     created_at: String 
   } 
     
-    type Wishlist { 
+  type Wishlist { 
     id: ID 
     user_id: ID 
     property_id: ID 
