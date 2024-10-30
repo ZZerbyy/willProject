@@ -1,5 +1,6 @@
 // server.js
 const express = require('express');
+const cors = require('cors'); // Import CORS
 const { graphqlHTTP } = require('express-graphql');
 const schema = require('./graphql/schema');
 const resolvers = require('./graphql/resolvers');
@@ -8,6 +9,9 @@ require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 3001;
+
+// Enable CORS for all routes
+app.use(cors());
 
 // Middleware to check for JWT and attach user to request
 app.use((req, res, next) => {
