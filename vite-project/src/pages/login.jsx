@@ -10,30 +10,23 @@ function Login() {
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
   const navigate = useNavigate();
-
   const handleLogin = async (e) => {
     e.preventDefault();
-
+    
     try {
-      // Call the LOGIN mutation with email and password
       const { login } = await fetchData(LOGIN, { email, password });
-
-      // Save token in localStorage and set isLoggedIn
-      localStorage.setItem('authToken', login.token);
-      localStorage.setItem('isLoggedIn', 'true');
       
-      // Set rememberMe in localStorage based on the checkbox
-      if (rememberMe) {
-        localStorage.setItem('rememberMe', 'true');
+      if (login) {
+        const { token, user } = login;
+        localStorage.setItem('token', token);
+        localStorage.setItem('isLoggedIn', 'true');
+        navigate('/'); // Redirect after login
       } else {
-        localStorage.removeItem('rememberMe');
+        alert('Login failed.');
       }
-
-      navigate('/'); // Redirect to home after successful login
-
     } catch (error) {
       console.error('Login failed:', error.message);
-      alert('Invalid email or password'); // Show error to user
+      alert(`Login failed: ${error.message}`);
     }
   };
 
