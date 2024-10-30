@@ -151,6 +151,34 @@ const root = {
     if (error) throw new Error(error.message);
     return data;
   },
+
+  // Add to favorites
+  addFavorite: async ({ user_id, property_id }) => {
+    const { data, error } = await supabase.from('favorites').insert([{ user_id, property_id }]);
+    if (error) throw new Error(error.message);
+    return data;
+  },
+
+  // Add to wishlist
+  addWishlist: async ({ user_id, property_id }) => {
+    const { data, error } = await supabase.from('wishlists').insert([{ user_id, property_id }]);
+    if (error) throw new Error(error.message);
+    return data;
+  },
+
+  // Fetch favorites for user
+  favoritesByUser: async ({ user_id }) => {
+    const { data, error } = await supabase.from('favorites').select('*').eq('user_id', user_id);
+    if (error) throw new Error(error.message);
+    return data;
+  },
+
+  // Fetch wishlist for user
+  wishlistByUser: async ({ user_id }) => {
+    const { data, error } = await supabase.from('wishlists').select('*').eq('user_id', user_id);
+    if (error) throw new Error(error.message);
+    return data;
+  }
 };
 
 module.exports = root;

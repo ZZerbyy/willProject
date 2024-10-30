@@ -7,6 +7,8 @@ const schema = buildSchema(`
     properties: [Property]
     propertiesByUser(user_id: ID!): [Property]
     propertyById(id: ID!): Property
+    favoritesByUser(user_id: ID!): [Favorite] 
+    wishlistByUser(user_id: ID!): [Wishlist]
   }
 
   type Mutation {
@@ -18,6 +20,8 @@ const schema = buildSchema(`
     addProperty(name: String!, location: String!, price: Float!, description: String!, user_id: ID!): Property
     updateProperty(id: ID!, name: String, location: String, price: Float, description: String): Property
     deleteProperty(id: ID!): Property
+    addFavorite(user_id: ID!, property_id: ID!): Favorite 
+    addWishlist(user_id: ID!, property_id: ID!): Wishlist
   }
 
   type User {
@@ -39,6 +43,20 @@ const schema = buildSchema(`
     description: String
     user_id: ID
     created_at: String
+  }
+  
+    type Favorite { 
+    id: ID 
+    user_id: ID 
+    property_id: ID 
+    created_at: String 
+  } 
+    
+    type Wishlist { 
+    id: ID 
+    user_id: ID 
+    property_id: ID 
+    created_at: String 
   }
 `);
 
