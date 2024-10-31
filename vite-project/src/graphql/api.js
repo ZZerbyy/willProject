@@ -1,20 +1,12 @@
-import { API_URL } from './config';
+import { API_URL } from './config.js';
 
 export async function fetchData(query, variables = {}) {
   try {
-    const token = localStorage.getItem('token'); // Assume token is stored in localStorage after login
-    const headers = {
-      'Content-Type': 'application/json',
-    };
-
-    // Add Authorization header if token is available
-    if (token) {
-      headers['Authorization'] = `Bearer ${token}`;
-    }
-
     const response = await fetch(API_URL, {
       method: 'POST',
-      headers,
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         query,
         variables,
