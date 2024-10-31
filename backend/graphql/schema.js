@@ -28,6 +28,7 @@ const schema = buildSchema(`
       description: String!,
       property_type: String!, # New field added
       user_id: ID!
+      images: [String] # Allow array of image URLs as input
     ): Property
     
     updateProperty(
@@ -68,6 +69,7 @@ const schema = buildSchema(`
     property_type: String # New field added
     user_id: ID
     created_at: String
+     images: [Image] # Add this line
   }
   
   type Favorite { 
