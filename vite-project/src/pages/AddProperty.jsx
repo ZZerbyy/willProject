@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'; 
 import { Form, Button, Container } from 'react-bootstrap';
 import { useMutation } from '@apollo/client';
 import { ADD_PROPERTY } from '../graphql/queries';
@@ -36,13 +36,32 @@ const AddProperty = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Retrieve user_id from localStorage
+    const userId = localStorage.getItem('user_id');
+    
+    // Prepare and convert payload to match expected types
+    const payload = { 
+        ...formData, 
+        price: parseFloat(formData.price),  // Convert price to Float
+        images: images.length ? images : null,  // Ensure images is either an array or null
+        user_id: userId 
+    };
+    
     try {
-      await addProperty({ variables: { ...formData, images } });
-      alert('Property added successfully!');
+        console.log("Payload being sent to server:", payload); // Log the entire payload for debugging
+        
+        await addProperty({ 
+            variables: payload // Send the transformed payload
+        });
+        
+        alert('Property added successfully!');
     } catch (error) {
-      alert('Error adding property.');
+        console.error('Error adding property:', error);
+        alert('Error adding property.');
     }
-  };
+};
+
 
   return (
     <Container fluid className="add-property-page">

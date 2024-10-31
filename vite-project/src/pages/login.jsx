@@ -18,15 +18,22 @@ function Login() {
     e.preventDefault();
     
     try {
+      console.log('Attempting to login...');
       const { data } = await login({
         variables: { email, password }
       });
       
       if (data.login) {
         const { token, user } = data.login;
-        localStorage.setItem('token', token); // Store token
+        
+        // Save token and user ID to localStorage
+        localStorage.setItem('token', token);
+        localStorage.setItem('user_id', user.id); // Save user ID
+        console.log('User ID:', user.id);
         localStorage.setItem('isLoggedIn', 'true'); // Optional: to use for other checks
-        navigate('/'); // Redirect to home after login
+        
+        // Redirect to home after login
+        navigate('/');
       } else {
         alert('Login failed.');
       }

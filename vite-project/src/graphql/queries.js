@@ -1,6 +1,7 @@
 import gql from 'graphql-tag';
 
 // USER QUERIES AND MUTATIONS
+
 export const LOGIN = gql`
   mutation Login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
@@ -78,21 +79,21 @@ export const GET_USER_BY_ID = gql`
 `;
 
 // PROPERTY QUERIES AND MUTATIONS
+
 export const GET_PROPERTIES = gql`
-  query GetProperties($property_type: String, $min_price: Float, $max_price: Float) {
-    properties(property_type: $property_type, min_price: $min_price, max_price: $max_price) {
-      id
-      name
-      location
-      price
-      description
-      property_type
-      created_at
-      images {
-        image_url
-      }
+ query GetProperties {
+  properties {
+    id
+    name
+    location
+    price
+    description
+    property_type
+    images {
+      image_url
     }
   }
+}
 `;
 
 export const GET_PROPERTIES_BY_USER = gql`
@@ -204,6 +205,7 @@ export const DELETE_PROPERTY = gql`
 `;
 
 // FAVORITES AND WISHLIST QUERIES AND MUTATIONS
+
 export const ADD_FAVORITE = gql`
   mutation AddFavorite($user_id: ID!, $property_id: ID!) {
     addFavorite(user_id: $user_id, property_id: $property_id) {

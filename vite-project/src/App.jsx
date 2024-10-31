@@ -9,7 +9,7 @@ import Login from './pages/login.jsx';
 import SignUp from './pages/signUp.jsx';
 import Search from './pages/Search.jsx';
 import client from './apolloClient';
-import AddProperty from './pages/AddProperty.jsx';
+import AddProperty from './pages/Addproperty.jsx';
 import { ApolloProvider } from '@apollo/client';
 
 function App() {

@@ -78,7 +78,12 @@ const Listings = () => {
         <Container className="listings-section">
           <h2>Available Properties</h2>
           {loading && <p>Loading properties...</p>}
-          {error && <p>Error loading properties</p>}
+          {error && (
+            <>
+              <p>Error loading properties</p>
+              {console.error(error)}
+            </>
+          )}
           {data && data.properties.map((property) => (
             <div key={property.id} className="property-item">
               <h3>{property.name}</h3>
