@@ -1,45 +1,58 @@
-// server.js
 const express = require('express');
-const cors = require('cors'); // Import CORS
-const { graphqlHTTP } = require('express-graphql');
-const schema = require('./graphql/schema');
-const resolvers = require('./graphql/resolvers');
-const auth = require('./auth'); // Import the auth module
+const { ApolloServer } = require('apollo-server-express');
+const cors = require('cors');
+const auth = require('./auth');
+const typeDefs = require('./graphql/schema'); // Your GraphQL schema definitions
+const resolvers = require('./graphql/resolvers'); // Your resolvers
 require('dotenv').config();
 
-const app = express();
-const port = process.env.PORT || 3001;
-
-// Enable CORS for all routes
-app.use(cors({
-  origin: 'http://localhost:5173', // Replace with the URL of your frontend app
-  methods: ['GET', 'POST', 'OPTIONS'], // Allowed HTTP methods
-  allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
-}));
-
-// Middleware to check for JWT and attach user to request
-app.use((req, res, next) => {
-  const token = req.headers.authorization?.split(' ')[1];
-  if (token) {
-    try {
-      const user = auth.verifyToken(token);
-      req.user = user; // Attach user to request if token is valid
-    } catch (error) {
-      console.error('Invalid token');
-    }
-  }
+async function startApolloServer() {
+  const app = express();
+  app.use((req, res, next) => {
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.path}`);
+  console.log('Headers:', req.headers);
+  console.log('Body:', req.body);
   next();
 });
+  // Enable CORS for all routes
+  app.use(cors({
+    origin: 'http://localhost:5173', // Update with your frontend origin
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  }));
 
-// GraphQL setup with user context
-app.use('/graphql', graphqlHTTP((req) => ({
-  schema: schema,
-  rootValue: resolvers,
-  graphiql: true,
-  context: { user: req.user }, // Pass user to context for resolvers
-})));
+  // JWT Middleware
+  app.use((req, res, next) => {
+    const token = req.headers.authorization?.split(' ')[1];
+    if (token) {
+      try {
+        const user = auth.verifyToken(token);
+        req.user = user; // Attach user to request if token is valid
+      } catch (error) {
+        console.error('Invalid token');
+      }
+    }
+    next();
+  });
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-  console.log(`GraphQL server running on http://localhost:${port}/graphql`);
+  // Initialize Apollo Server with schema, resolvers, and context
+  const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+    context: ({ req }) => ({ user: req.user }), // Pass user to resolvers
+  });
+
+  await server.start();
+  server.applyMiddleware({ app, path: '/graphql' }); // Apply middleware to /graphql path
+
+  // Start the server
+  const port = process.env.PORT || 5000;
+  app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}${server.graphqlPath}`);
+  });
+}
+
+// Start the Apollo Server
+startApolloServer().catch((error) => {
+  console.error('Error starting server:', error);
 });
