@@ -78,7 +78,11 @@ const schema = buildSchema(`
     property_id: ID 
     created_at: String 
   } 
-    
+     type Image {
+    id: ID!
+    property_id: ID!
+    image_url: String!
+  } 
   type Wishlist { 
     id: ID 
     user_id: ID 

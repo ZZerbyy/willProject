@@ -1,51 +1,9 @@
 import gql from 'graphql-tag';
 
-export const LOGIN = gql`
-  mutation Login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
-      token
-      user {
-        id
-        username
-        email
-      }
-    }
-  }
-`;
 
-// USER QUERIES AND MUTATIONS
 
-// Fetch all users (protected)
-export const GET_USERS = gql`
-  query GetUsers {
-    users {
-      id
-      username
-      email
-      created_at
-    }
-  }
-`;
 
-// Fetch a single user by ID (protected)
-export const GET_USER_BY_ID = gql`
-  query GetUserById($id: ID!) {
-    userById(id: $id) {
-      id
-      username
-      email
-      created_at
-      properties {
-        id
-        name
-        location
-        price
-        description
-        property_type
-      }
-    }
-  }
-`;
+
 
 // Add a new user
 export const ADD_USER = gql`
@@ -83,19 +41,7 @@ export const DELETE_USER = gql`
 // PROPERTY QUERIES AND MUTATIONS
 
 // Fetch all properties with optional filters
-export const GET_PROPERTIES = gql`
-  query GetProperties($property_type: String, $min_price: Float, $max_price: Float) {
-    properties(property_type: $property_type, min_price: $min_price, max_price: $max_price) {
-      id
-      name
-      location
-      price
-      description
-      property_type
-      created_at
-    }
-  }
-`;
+
 
 // Fetch properties by user ID
 export const GET_PROPERTIES_BY_USER = gql`
@@ -113,48 +59,10 @@ export const GET_PROPERTIES_BY_USER = gql`
 `;
 
 // Fetch a single property by ID
-export const GET_PROPERTY_BY_ID = gql`
-  query GetPropertyById($id: ID!) {
-    propertyById(id: $id) {
-      id
-      name
-      location
-      price
-      description
-      property_type
-      created_at
-    }
-  }
-`;
+
 
 // Add a new property (protected)
-export const ADD_PROPERTY = gql`
-  mutation AddProperty($name: String!, $location: String!, $price: Float!, $description: String!, $property_type: String!, $user_id: ID!) {
-    addProperty(name: $name, location: $location, price: $price, description: $description, property_type: $property_type, user_id: $user_id) {
-      id
-      name
-      location
-      price
-      description
-      property_type
-      created_at
-    }
-  }
-`;
 
-// Update property details (protected)
-export const UPDATE_PROPERTY = gql`
-  mutation UpdateProperty($id: ID!, $name: String, $location: String, $price: Float, $description: String, $property_type: String) {
-    updateProperty(id: $id, name: $name, location: $location, price: $price, description: $description, property_type: $property_type) {
-      id
-      name
-      location
-      price
-      description
-      property_type
-    }
-  }
-`;
 
 // Delete a property (protected)
 export const DELETE_PROPERTY = gql`
@@ -219,3 +127,110 @@ export const GET_WISHLIST_BY_USER = gql`
     }
   }
 `;
+
+
+export const LOGIN = gql`
+  mutation Login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      token
+      user {
+        id
+        username
+        email
+      }
+    }
+  }
+`;
+
+// USER QUERIES AND MUTATIONS
+export const GET_USERS = gql`
+  query GetUsers {
+    users {
+      id
+      username
+      email
+      created_at
+    }
+  }
+`;
+
+export const GET_USER_BY_ID = gql`
+  query GetUserById($id: ID!) {
+    userById(id: $id) {
+      id
+      username
+      email
+      created_at
+      properties {
+        id
+        name
+        location
+        price
+        description
+        property_type
+        images 
+      }
+    }
+  }
+`;
+
+// PROPERTY QUERIES AND MUTATIONS
+export const GET_PROPERTIES = gql`
+  query GetProperties($property_type: String, $min_price: Float, $max_price: Float) {
+    properties(property_type: $property_type, min_price: $min_price, max_price: $max_price) {
+      id
+      name
+      location
+      price
+      description
+      property_type
+      created_at
+      images 
+    }
+  }
+`;
+
+export const GET_PROPERTY_BY_ID = gql`
+  query GetPropertyById($id: ID!) {
+    propertyById(id: $id) {
+      id
+      name
+      location
+      price
+      description
+      property_type
+      created_at
+      images 
+    }
+  }
+`;
+
+export const ADD_PROPERTY = gql`
+  mutation AddProperty($name: String!, $location: String!, $price: Float!, $description: String!, $property_type: String!, $user_id: ID!, $images: [String!]) {
+    addProperty(name: $name, location: $location, price: $price, description: $description, property_type: $property_type, user_id: $user_id, images: $images) {
+      id
+      name
+      location
+      price
+      description
+      property_type
+      created_at
+      images 
+    }
+  }
+`;
+
+export const UPDATE_PROPERTY = gql`
+  mutation UpdateProperty($id: ID!, $name: String, $location: String, $price: Float, $description: String, $property_type: String, $images: [String!]) {
+    updateProperty(id: $id, name: $name, location: $location, price: $price, description: $description, property_type: $property_type, images: $images) {
+      id
+      name
+      location
+      price
+      description
+      property_type
+      images 
+    }
+  }
+`;
+
