@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 import { useNavigate, Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { LOGIN } from '../graphql/queries'; // Import the LOGIN mutation
+import { LOGIN } from '../graphql/queries';
 import '../styles/SignUp.css';
 
 function Login() {
@@ -24,9 +24,9 @@ function Login() {
       
       if (data.login) {
         const { token, user } = data.login;
-        localStorage.setItem('token', token);
-        localStorage.setItem('isLoggedIn', 'true');
-        navigate('/'); // Redirect after login
+        localStorage.setItem('token', token); // Store token
+        localStorage.setItem('isLoggedIn', 'true'); // Optional: to use for other checks
+        navigate('/'); // Redirect to home after login
       } else {
         alert('Login failed.');
       }

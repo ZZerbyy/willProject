@@ -1,0 +1,31 @@
+/* Add Property Page Styles */
+.add-property-page {
+    font-family: Arial, sans-serif;
+    padding: 40px 0;
+    background-color: #f9f9f9;
+  }
+  
+  .form-container {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-container h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .form-container .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-container button {
+    width: 100%;
+    font-size: 1rem;
+    padding: 10px 0;
+  }
+  

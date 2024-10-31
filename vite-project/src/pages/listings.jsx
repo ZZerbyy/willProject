@@ -1,4 +1,3 @@
-// Listings.jsx
 import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import { useLazyQuery } from '@apollo/client';
@@ -31,7 +30,6 @@ const Listings = () => {
     <Container fluid className="listings-page">
       <Navigation />
       <Container fluid className="content-container">
-        
         {/* Search Section (Left) */}
         <Container className="search-section p-4">
           <h2>Find Property to Rent</h2>
@@ -86,6 +84,20 @@ const Listings = () => {
               <h3>{property.name}</h3>
               <p>{property.description}</p>
               <p>Price: {property.price}</p>
+              <div className="property-images">
+                {property.images && property.images.length > 0 ? (
+                  property.images.map((image, index) => (
+                    <img
+                      key={index}
+                      src={image.image_url}
+                      alt={`${property.name} image ${index + 1}`}
+                      className="property-image"
+                    />
+                  ))
+                ) : (
+                  <p>No images available</p>
+                )}
+              </div>
             </div>
           ))}
         </Container>
