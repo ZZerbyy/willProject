@@ -51,7 +51,7 @@ async function startApolloServer() {
   server.applyMiddleware({ app, path: '/graphql' }); // Apply Apollo middleware
 
   // Start Express server
-  const port = process.env.PORT || 5000;
+  const port = process.env.PORT || 5001;
   app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}${server.graphqlPath}`);
   });

@@ -4,15 +4,11 @@ const schema = buildSchema(`
   type Query {
     users: [User]
     userById(id: ID!): User
-
-    # Fetch properties with optional filters
     properties(property_type: String, min_price: Float, max_price: Float): [Property]
     propertiesByUser(user_id: ID!): [Property]
     propertyById(id: ID!): Property
-
-    favoritesByUser(user_id: ID!): [Favorite] 
+    favoritesByUser(user_id: ID!): [Favorite]
     wishlistByUser(user_id: ID!): [Wishlist]
-    
   }
 
   type Mutation {
@@ -26,9 +22,9 @@ const schema = buildSchema(`
       location: String!,
       price: Float!,
       description: String!,
-      property_type: String!, # New field added
-      user_id: ID!
-      images: [String] # Allow array of image URLs as input
+      property_type: String!,
+      user_id: ID!,
+      images: [String]
     ): Property
     
     updateProperty(
@@ -37,12 +33,12 @@ const schema = buildSchema(`
       location: String,
       price: Float,
       description: String,
-      property_type: String # New field added
+      property_type: String,
+      images: [String]
     ): Property
-    
-    deleteProperty(id: ID!): Property
 
-    addFavorite(user_id: ID!, property_id: ID!): Favorite 
+    deleteProperty(id: ID!): Property
+    addFavorite(user_id: ID!, property_id: ID!): Favorite
     addWishlist(user_id: ID!, property_id: ID!): Wishlist
     removeFavorite(id: ID!): Favorite
   }
@@ -54,40 +50,42 @@ const schema = buildSchema(`
     created_at: String
     properties: [Property]
   }
-  
+
   type AuthPayload {
     token: String
     user: User
   }
-  
+
   type Property {
     id: ID
     name: String
     location: String
     price: Float
     description: String
-    property_type: String # New field added
+    property_type: String
     user_id: ID
     created_at: String
-     images: [Image] # Add this line
+    images: [Image]
   }
-  
-  type Favorite { 
-    id: ID 
-    user_id: ID 
-    property_id: ID 
-    created_at: String 
-  } 
-     type Image {
+
+  type Favorite {
+    id: ID
+    user_id: ID
+    property_id: ID
+    created_at: String
+  }
+
+  type Image {
     id: ID!
     property_id: ID!
     image_url: String!
-  } 
-  type Wishlist { 
-    id: ID 
-    user_id: ID 
-    property_id: ID 
-    created_at: String 
+  }
+
+  type Wishlist {
+    id: ID
+    user_id: ID
+    property_id: ID
+    created_at: String
   }
 `);
 
