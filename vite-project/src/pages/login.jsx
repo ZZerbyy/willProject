@@ -1,23 +1,29 @@
+// src/pages/Login.jsx
 import React, { useState } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 import { useNavigate, Link } from 'react-router-dom';
-import { LOGIN } from '../graphql/queries'; // Import LOGIN mutation
-import { fetchData } from '../graphql/api'; // Import API helper function
-import './SignUp.css';
+import { useMutation } from '@apollo/client';
+import { LOGIN } from '../graphql/queries'; // Import the LOGIN mutation
+import '../styles/SignUp.css';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
   const navigate = useNavigate();
+
+  const [login, { error }] = useMutation(LOGIN);
+
   const handleLogin = async (e) => {
     e.preventDefault();
     
     try {
-      const { login } = await fetchData(LOGIN, { email, password });
+      const { data } = await login({
+        variables: { email, password }
+      });
       
-      if (login) {
-        const { token, user } = login;
+      if (data.login) {
+        const { token, user } = data.login;
         localStorage.setItem('token', token);
         localStorage.setItem('isLoggedIn', 'true');
         navigate('/'); // Redirect after login
@@ -64,6 +70,7 @@ function Login() {
           Login
         </Button>
       </Form>
+      {error && <p className="error-text">Error: {error.message}</p>}
     </Container>
   );
 }

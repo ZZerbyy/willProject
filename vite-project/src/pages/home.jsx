@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import Navigation from '../components/Navbar';
 import Footer from '../components/Footer';
-import './Home.css';
+import '../styles/Home.css';
 
 const Home = () => {
   return (

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Navigation from '../components/Navbar';
 import Footer from '../components/Footer';
-import './Search.css';
+import '../styles/Search.css';
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);

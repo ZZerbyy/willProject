@@ -1,7 +1,7 @@
 import React from 'react';
 import Navigation from '../components/Navbar';
 import Footer from '../components/Footer';
-import './ContactUs.css';
+import '../styles/ContactUs.css';
 
 function ContactUs() {
   return (

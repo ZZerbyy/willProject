@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import './SignUp.css';
+import '../styles/SignUp.css';
 
 function SignUp() {
   const [email, setEmail] = useState('');
